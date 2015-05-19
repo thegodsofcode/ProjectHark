@@ -82,10 +82,11 @@ public class Myservice extends Service
             {
                 case MSG_RECOGNIZER_START_LISTENING:
 
+
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
                     {
                         // turn off beep sound
-                        target.mAudioManager.setStreamMute(AudioManager.STREAM_SYSTEM, true);
+                        target.mAudioManager.setStreamMute(AudioManager.STREAM_SYSTEM, false);
                     }
                     if (!target.mIsListening)
                     {
@@ -218,6 +219,8 @@ public class Myservice extends Service
                 final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.mothalali);
                 mp.start();
             }
+            else if (str.equals("turn off"))
+            {   }
             Message message = Message.obtain(null, MSG_RECOGNIZER_CANCEL);
 
             try
