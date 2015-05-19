@@ -25,19 +25,37 @@ import android.widget.ToggleButton;
 
 
 public class MainActivity extends ActionBarActivity {
-    public  TextView switchtxt;
+
     private int mBindFlag;
     private Messenger mServiceMessenger;
     public  Myservice myservice;
-    private Switch mySwitch;
     private Button btn;
+    private Button stng;
+
+    public String mk;
+    public String mu;
+
+    public String org_mk;
+    public String org_mu;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
                setContentView(R.layout.activity_main);
 
+        /*
+            Calling The Function That Reads The File And
+            Load The MK AND MV
+         */
+
+        LoadSavedMKU();
+
         myservice=new Myservice();
         btn=(Button)findViewById(R.id.button);
+        stng=(Button)findViewById(R.id.setting_button);
+
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,32 +73,35 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-      /*  mySwitch = (Switch) findViewById(R.id.mySwitch);
-
-        mySwitch.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
+        stng.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onClick(View v) {
+                //Call Settings Activity;
 
-                if(isChecked)
-                {
-                    Intent service = new Intent(getApplicationContext(), Myservice.class);
-                    startService(service);
-                    mBindFlag = Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH ? 0 : Context.BIND_ABOVE_CLIENT;
-
-                }
-
-                else
-                    stopService(new Intent(getBaseContext(), Myservice.class));
-
-
+                Intent intent = new Intent(MainActivity.this,Settings_Activity.class);
+                startActivity(intent);
+                finish();
 
             }
         });
 
-
-
-*/
     }
+
+    public void LoadSavedMKU() {
+
+        //Reads And Copies To
+
+        //mk = org_mk;
+        //mu = org_mu;
+
+    }
+
+    public void SaveMKU(){
+
+        //Save To the File - org_mk and org_mv
+
+    }
+
 
     @Override
     protected void onStart()
@@ -131,18 +152,6 @@ public class MainActivity extends ActionBarActivity {
     };
 
 
-    // Method to start the service
-    public void startService(View view) {
-        Intent service = new Intent(this, Myservice.class);
-        startService(service);
-        mBindFlag = Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH ? 0 : Context.BIND_ABOVE_CLIENT;
 
-
-    }
-
-    // Method to stop the service
-    public void stopService(View view) {
-        stopService(new Intent(getBaseContext(), Myservice.class));
-    }
 
 }

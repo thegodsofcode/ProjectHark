@@ -20,6 +20,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
@@ -38,13 +39,16 @@ public class Myservice extends Service
 
     static final int MSG_RECOGNIZER_START_LISTENING = 1;
     static final int MSG_RECOGNIZER_CANCEL = 2;
-    MainActivity ma;
-    private TextView mText;
+    MainActivity obj;
+
     private SpeechRecognizer sr;
     private static final String TAG = "MyStt3Activity";
     @Override
     public void onCreate() {
         super.onCreate();
+
+        obj = new MainActivity();
+
         sr = SpeechRecognizer.createSpeechRecognizer(this);
         sr.setRecognitionListener(new listener());
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -214,13 +218,26 @@ public class Myservice extends Service
             }
             str= (String) data.get(0);
 
-            if(str.equals("where are you"))
+            if(str.equals(obj.mk))
             {
-                final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.mothalali);
-                mp.start();
+                //final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.mothalali);
+                //mp.start();
+
+                MediaPlayer mp = new MediaPlayer();
+
+                try {
+                    mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mp.setDataSource(obj.mu);
+                    mp.prepare();
+                    mp.start();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
             }
-            else if (str.equals("turn off"))
-            {   }
+
             Message message = Message.obtain(null, MSG_RECOGNIZER_CANCEL);
 
             try
