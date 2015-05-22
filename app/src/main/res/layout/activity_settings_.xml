@@ -7,32 +7,15 @@
     tools:context="tes.recognition.voice.finalisinghawk.Settings_Activity"
     android:background="#ffff6f55">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="documents/yy/uuu/mpe.mp3"
-        android:id="@+id/openmus"
-        android:textColor="#ff000000"
-        android:enabled="false"
-        android:width="500dp"
-        android:height="60dp"
-        android:layout_marginBottom="196dp"
-        android:textSize="20sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold"
-        android:textAlignment="center" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editmk"
-        android:layout_above="@+id/openmus"
-        android:layout_marginBottom="36dp"
         android:width="500dp"
         android:height="60dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,16 +27,36 @@
         android:width="500dp"
         android:height="80dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/test_button"
+        android:clickable="true"
+        android:src="@drawable/abc_btn_radio_to_on_mtrl_000"
+        android:layout_below="@+id/openmus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Done"
+        android:text=""
+        android:height="70sp"
+        android:width="500sp"
+        android:id="@+id/openmus"
+        android:layout_below="@+id/editmk"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="39dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/done_click"
-        android:textSize="40dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/test_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="87dp" />
+        android:src="@drawable/abc_btn_check_to_on_mtrl_015" />
+
 </RelativeLayout>

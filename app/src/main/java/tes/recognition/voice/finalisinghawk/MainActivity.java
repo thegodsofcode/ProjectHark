@@ -32,8 +32,8 @@ public class MainActivity extends ActionBarActivity {
     private Button btn;
     private Button stng;
 
-    public String mk;
-    public String mu;
+    public String mk = "Where Are You";
+    public String mu = "/Sdcard/dsd/dwe2w.mp3";
 
     public String org_mk;
     public String org_mu;
@@ -77,6 +77,8 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 //Call Settings Activity;
+
+                stopService(new Intent(getBaseContext(), Myservice.class));
 
                 Intent intent = new Intent(MainActivity.this,Settings_Activity.class);
                 startActivity(intent);
@@ -152,6 +154,10 @@ public class MainActivity extends ActionBarActivity {
     };
 
 
+    @Override
+    protected void onPause() {
+        super.onPause();
 
-
+        finish();
+    }
 }
